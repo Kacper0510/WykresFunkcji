@@ -1,6 +1,25 @@
 body
 {
- color: red;
+  color: red;
   font-family: Times_New_Roman;
   font-size: 160%;
+}
+ul {
+  float: left;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+li a {
+display: block;
+background-color: grey;
+color: black;
+float: center;
+width: 100px;
+text-align: center;
+font-size: 0.5em;
+padding: 10px 15px;
+margin: 0px 1px 1px 0px;
 }
