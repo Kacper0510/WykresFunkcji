@@ -12,6 +12,7 @@ body {
     border: 0px;
     background: red;
     height: 1px;
+    margin-bottom: 15px
 }
 
 .outer_menu_buttons {
@@ -22,17 +23,18 @@ body {
     text-decoration: none;
     color: black;
     margin: 0.5%;
-    background-color: lightgray;
+    margin-bottom: 8px;
 }
 
 .outer_menu_buttons:hover, .outer_menu_buttons:active {
-  background-color: #D3C7C4;
+    background-color: #D3C7C4;
 }
 
 .inner_menu_buttons {
     margin: 0.5%;
     border: 1px solid black;
     border-radius: 5px;
+    box-shadow: 4px 4px 4px #888888;
 }
 
 .menu {
@@ -44,10 +46,10 @@ body {
 }
 
 a:link, a:visited {
-  color: black;
-  padding: 0.5% 1%;
-  width: 100%;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
+    color: black;
+    padding: 0.5% 1%;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
 }
