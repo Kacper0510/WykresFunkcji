@@ -8,13 +8,6 @@ body {
     text-align: center;
 }
 
-.red_line {
-    border: 0px;
-    background: red;
-    height: 1px;
-    margin-bottom: 15px
-}
-
 .outer_menu_buttons {
     float: left;
     width: 24%;
