@@ -1,32 +1,30 @@
-body
-{
-  color: red;
-  font-family: Times_New_Roman;
-  font-size: 75%;
-  margin: 0;
+body {
+    color: red;
+    font-family: Roboto;
+    font-size: 90%;
+    margin: 0;
 }
 
-menu
-{
-    li
-    {
-     float: felt;
-     width: 50%;
-     text-align: center;
-     padding: 15px 0;
-    }
-
-    a
-    {
-        text-decoration: none;
-        color: black;
-    }
-
-    nav ul
-    {
-        background: lightgray;
-        height: 50px;
-        box-shadow: 0px 0px 20px 2px #000;
-    }
+.zewnetrzne_przyciski_menu {
+    float: left;
+    width: 24%;
+    text-align: center;
+    display: inline-bloc;
+    text-decoration: none;
+    color: black;
+    margin: 0.5%;
+    background-color: lightgray;
 }
 
+.wewnetrzne_przyciski_menu {
+    margin: 0.5%;
+    border: 1px solid black;
+}
+
+.menu {
+    list-style-type: none;
+    overflow: hidden;
+    background: #E1DAD8;
+    width: 100%;
+    box-shadow: 0px 0px 10px 2px #000;
+}
