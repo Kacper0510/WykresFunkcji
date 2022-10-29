@@ -1,11 +1,20 @@
 body {
-    color: red;
     font-family: Roboto;
     font-size: 90%;
     margin: 0;
 }
 
-.zewnetrzne_przyciski_menu {
+.centered_text {
+    text-align: center;
+}
+
+.red_line {
+    border: 0px;
+    background: red;
+    height: 1px;
+}
+
+.outer_menu_buttons {
     float: left;
     width: 24%;
     text-align: center;
@@ -16,9 +25,14 @@ body {
     background-color: lightgray;
 }
 
-.wewnetrzne_przyciski_menu {
+.outer_menu_buttons:hover, .outer_menu_buttons:active {
+  background-color: #D3C7C4;
+}
+
+.inner_menu_buttons {
     margin: 0.5%;
     border: 1px solid black;
+    border-radius: 5px;
 }
 
 .menu {
@@ -30,14 +44,10 @@ body {
 }
 
 a:link, a:visited {
-  background-color: lightgray;
   color: black;
   padding: 0.5% 1%;
+  width: 100%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-}
-
-a:hover, a:active {
-  background-color: #D3C7C4  ;
 }
