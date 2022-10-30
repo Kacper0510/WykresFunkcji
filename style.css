@@ -102,6 +102,11 @@ body {
     text-shadow: 0px 0px 10px;
 }
 
+.szczegóły{
+    text-align: center;
+    text-shadow: 0px 0px 10px;
+}
+
 .zerowe{
     margin: 2%;
     box-shadow: 4px 4px 4px #888888;
