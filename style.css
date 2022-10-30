@@ -44,6 +44,8 @@ body {
     border: 1px solid black;
     border-radius: 5px;
     text-align: center;
+    margin-bottom: 8px;
+    float: left;
 }
 
 a:link, a:visited {
