@@ -38,14 +38,67 @@ body {
     box-shadow: 0px 0px 10px 2px #000;
 }
 
-.formularz{
+.formula{
     margin: 2%;
     box-shadow: 4px 4px 4px #888888;
     border: 1px solid black;
     border-radius: 5px;
     text-align: center;
-    margin-bottom: 8px;
+    margin-bottom: 0.1%;
+    margin-top: 0.1%
+    margin-right: 0.1%;
+    margin-left: 0.1%
     float: left;
+    background-color: #E1DAD8;
+}
+
+.formula1{
+    margin: 2%;
+    box-shadow: 4px 4px 4px #888888;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 0.1%;
+    margin-top: 0.1%
+    margin-right: 0.1%;
+    margin-left: 0.1%
+    float: left;
+    background-color: #E1DAD8;
+}
+
+.napis_kalkulator{
+    text-align: center;
+    text-shadow: 0px 0px 10px #;
+    text-transform: uppercase
+    font-size: 1050%;
+    font-size: 150%;  /* nie dotykać, działa*/
+}
+.napis_przedzial{
+    text-align: center;
+    text-shadow: 0px 0px 10px;
+}
+
+.napis_wzor{
+    text-align: center;
+    text-shadow: 0px 0px 10px;
+}
+
+.canvas{
+    text-align: center;
+}
+
+.napis_wykres{
+    text-align: center;
+    text-shadow: 0px 0px 10px;
+}
+
+.generuj{
+    text-align: center;
+}
+
+.napis_generuj{
+    text-align: center;
+    text-shadow: 0px 0px 10px;
 }
 
 a:link, a:visited {

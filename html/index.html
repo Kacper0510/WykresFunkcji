@@ -35,15 +35,51 @@
         </div>
          <!-- Kalkulator graficzny -->
         <div class="kalk_graf">
-            <div class="formularz">
+            <div class="napis_kalkulator">
+                <br>
+                Kalkulator graficzny funkcji
+            </div>
+            <div class="formula">
+                <br>
+                <div class="napis_wzor">
+                    W tym miejscu podajesz wzór swojej funkcji...
+                    </div>
                 <br>
                 <label for="wzor">Podaj wzór funkcji: </label>
                 <input type="text" id="wzor" name="wzor">
+                <br><br>
+            </div>
+            <div class="formula1">
+                <br>
+                <div class="napis_przedzial">
+                    W tym miejscu podajesz przedziały swojej funkcji...
+                    </div>
+                <br>
                 <label for="przedzial">Podaj przedziały:</label>
                 <input type="text" id="przedzial" name="przedzial">
                 <br><br>
             </div>
+            <br>
+            <div class="napis_generuj">
+                ...i kliknij przycisk "Generuj"
+            </div>
+
+            </div>
+                <div class="generuj">
+                    <br>
+                   <input type="submit" value="Generuj"
+                </div>
+            </div>
              <!-- miejsce na tabelke/rysunek na funckję -->
+            <div class="napis_wykres">
+                <br><br>Twój wykres:
+            </div>
+            <div class="canvas">  <!-- powienien być wyrażony w procentach ale html nie daje takich możliwości -->
+                <br>
+                <canvas id="miejsce_wykres" width="500" height="300" style="border:2px solid #000000;"></canvas>
+            </div>
+            <div class="zerowe">
+            </div>
         </div>
     </body>
 </html>
