@@ -1,1 +1,1 @@
-document.getElementById('wzor').innerText = text
+console.log('Hello world!')
