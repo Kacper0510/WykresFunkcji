@@ -1,1 +1,1 @@
-document.getElementById('hello-container').innerText = text
+document.getElementById('wzor').innerText = text
