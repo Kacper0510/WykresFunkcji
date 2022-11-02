@@ -148,3 +148,7 @@ a:link, a:visited {
     background-color: #E1DAD8;
     text-align: center;
 }
+
+.home{
+    display: flex
+}
