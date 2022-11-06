@@ -6,16 +6,15 @@
         <script src="../js/parser.js"></script>
     </head>
     <body>
-        <br>
-        <a href="index.html">
-        <h1 class="centered_text">Wykres funkcji</h1>
-        </a>
-        <h4 class="centered_text">Wykres, ekstremum funkcji, miejsca zerowe</h4>
-            <a href="index.html">
         <div class="home">
-            <img src="../img/domek.png" style="display: block; margin: auto"/>
-        </div> <!-- Kiedyś to poprawię z lokalizacją plików -->
+            <a href="index.html">
+                <h1>
+                    <img src="../img/domek.png">
+                    Wykres funkcji
+                </h1>
             </a>
+        </div>
+        <h4 class="centered_text">Wykres, ekstremum funkcji, miejsca zerowe</h4>
         <br>
         <div class="menu">
             <!-- Menu -->
@@ -40,76 +39,76 @@
                 </div>
             </div>
         </div>
-         <!-- Kalkulator graficzny -->
+        <!-- Kalkulator graficzny -->
         <div class="kalk_graf">
             <div class="napis_kalkulator">
                 <br>
                 Kalkulator graficzny funkcji
             </div>
-            <div class="formula">
+            <div class="wyróżniony_div">
                 <br>
-                <div class="napis_wzor">
+                <div class="centered_text">
                     W tym miejscu podajesz wzór swojej funkcji...
                 </div>
                 <br>
                 <label for="wzor">Podaj wzór funkcji: </label>
-                <input type="text" id="wzor" name="wzor" size="40">
+                <input id="wzor" name="wzor" size="40" type="text">
                 <br><br>
             </div>
-            <div class="formula1">
+            <div class="wyróżniony_div">
                 <br>
-                <div class="napis_przedzial">
+                <div class="centered_text">
                     W tym miejscu podajesz przedziały swojej funkcji...
                 </div>
                 <br>
                 <label for="przedzial_dolny">Podaj początek przedziału:</label>
-                <input type="text" id="przedzial_dolny" name="przedzial_dolny" size="8">
+                <input id="przedzial_dolny" name="przedzial_dolny" size="8" type="text">
                 <br><br>
                 <label for="przedzial_gorny">Podaj koniec przedziału:</label>
-                <input type="text" id="przedzial_gorny" name="przedzial_gorny" size="8">
+                <input id="przedzial_gorny" name="przedzial_gorny" size="8" type="text">
                 <br><br>
             </div>
             <br>
-            <div class="napis_generuj">
+            <div class="centered_text">
                 ...i kliknij przycisk "Generuj"
             </div>
 
             <div>
-                <div class="generuj">
+                <div class="centered_text">
                     <br>
-                   <input type="submit" value="Generuj" onclick="tymczasowe_onclick();">
+                    <input onclick="tymczasowe_onclick();" type="submit" value="Generuj">
                 </div>
             </div>
-             <!-- miejsce na tabelkę/rysunek na funkcję -->
-            <div class="napis_wykres">
+            <!-- miejsce na tabelkę/rysunek na funkcję -->
+            <div class="centered_text">
                 <br><br>Twój wykres:
             </div>
-            <div class="canvas">  <!-- powinien być wyrażony w procentach ale html nie daje takich możliwości -->
+            <div class="centered_text" id="canvas_div">  <!-- powinien być wyrażony w procentach ale html nie daje takich możliwości -->
                 <br>
-                <canvas id="miejsce_wykres" width="700" height="500" style="border:2px solid #000000;"></canvas>
+                <canvas height="500" id="miejsce_wykres" style="border:2px solid #000000;" width="700"></canvas>
             </div>
-        <br>
-        <div class="szczegóły">
-            Szczegóły twojej funkcji:
-        </div>
-        <br>
-            <div class="zerowe">
-            Miejsce zerowe twojej funkcji:
+            <br>
+            <div class="centered_text">
+                Szczegóły twojej funkcji:
+            </div>
+            <br>
+            <div class="wyróżniony_div">
+                Miejsce zerowe twojej funkcji:
                 <br>
             </div>
             <br>
-            <div class="ekstremum">
-            Ekstrema twojej funkcji: <br>
+            <div class="wyróżniony_div">
+                Ekstrema twojej funkcji: <br>
             </div>
             <br>
         </div>
-    <hr style="border: 0px; background: gray; height: 3px;">
-    <div class="stópki">
-        <br>
-    <p>Projekt wykonany w ramach projektu "Programistyczne Koło Naukowe". </p>
-        <p>by Kacper0510, Kowal-Michal & Bartek Budzyn</p>
-        <p>© 2022</p>
-        <br>
-    </div>
+        <hr style="border: 0px; background: gray; height: 3px;">
+        <div class="stópki">
+            <br>
+            <p>Projekt wykonany w ramach projektu "Programistyczne Koło Naukowe". </p>
+            <p>by Kacper0510, Kowal-Michal & Bartek Budzyn</p>
+            <p>© 2022</p>
+            <br>
+        </div>
     </body>
 </html>

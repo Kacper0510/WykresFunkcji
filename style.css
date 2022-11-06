@@ -13,7 +13,7 @@ body {
     float: left;
     width: 24%;
     text-align: center;
-    display: inline-bloc;
+    display: inline-block;
     text-decoration: none;
     color: black;
     margin: 0.5%;
@@ -39,7 +39,7 @@ body {
     box-shadow: 0px 0px 10px 2px #000;
 }
 
-.formula{
+.wyróżniony_div {
     margin: 2%;
     box-shadow: 4px 4px 4px #888888;
     border: 1px solid black;
@@ -53,87 +53,12 @@ body {
     background-color: #E1DAD8;
 }
 
-.formula1{
-    margin: 2%;
-    box-shadow: 4px 4px 4px #888888;
-    border: 1px solid black;
-    border-radius: 5px;
-    text-align: center;
-    margin-bottom: 0.1%;
-    margin-top: 0.1%
-    margin-right: 0.1%;
-    margin-left: 0.1%
-    float: left;
-    background-color: #E1DAD8;
-}
-
-.napis_kalkulator{
+.napis_kalkulator {
     text-align: center;
     text-shadow: 0px 0px 10px #;
     text-transform: uppercase
     font-size: 1050%;
     font-size: 150%;  /* nie dotykać, działa*/
-}
-
-.napis_przedzial{
-    text-align: center;
-    text-shadow: 0px 0px 10px;
-}
-
-.napis_wzor{
-    text-align: center;
-    text-shadow: 0px 0px 10px;
-}
-
-.canvas{
-    text-align: center;
-}
-
-.napis_wykres{
-    text-align: center;
-    text-shadow: 0px 0px 10px;
-}
-
-.generuj{
-    text-align: center;
-}
-
-.napis_generuj{
-    text-align: center;
-    text-shadow: 0px 0px 10px;
-}
-
-.szczegóły{
-    text-align: center;
-    text-shadow: 0px 0px 10px;
-}
-
-.zerowe{
-    margin: 2%;
-    box-shadow: 4px 4px 4px #888888;
-    border: 1px solid black;
-    border-radius: 5px;
-    text-align: center;
-    margin-bottom: 0.1%;
-    margin-top: 0.1%
-    margin-right: 0.1%;
-    margin-left: 0.1%
-    float: left;
-    background-color: #E1DAD8;
-}
-
-.ekstremum{
-    margin: 2%;
-    box-shadow: 4px 4px 4px #888888;
-    border: 1px solid black;
-    border-radius: 5px;
-    text-align: center;
-    margin-bottom: 0.1%;
-    margin-top: 0.1%
-    margin-right: 0.1%;
-    margin-left: 0.1%
-    float: left;
-    background-color: #E1DAD8;
 }
 
 a:link, a:visited {
@@ -145,11 +70,11 @@ a:link, a:visited {
     display: inline-block;
 }
 
-.stópki{
+.stópki {
     background-color: #E1DAD8;
     text-align: center;
 }
 
-.home{
-    display: flex
+.home {
+    display: flex;
 }

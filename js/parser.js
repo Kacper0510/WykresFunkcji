@@ -1,7 +1,7 @@
 "use strict";
 
 function tymczasowe_onclick() {
-    document.getElementsByClassName("canvas")[0].innerHTML = parse_to_rpn(document.getElementById("wzor").value).toString();
+    document.getElementById("canvas_div").innerHTML = parse_to_rpn(document.getElementById("wzor").value).toString();
 }
 
 const MNOZENIE_PRECEDENCJA = ["^", "*", "/"];
