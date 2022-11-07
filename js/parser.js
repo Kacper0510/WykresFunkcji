@@ -87,3 +87,48 @@ function parse_to_rpn(text) {
     }
     return wynik;
 }
+
+// Obliczanie wartości wyrażenia w formacie ONP dla danego x
+function calculate_rpn(rpn, x) {
+    let stos = [];
+    for (const symbol of rpn) {
+        if (typeof symbol === "number") {
+            stos.push(symbol);
+        } else {
+            switch (symbol) {
+                case "x":
+                    stos.push(x);
+                    break;
+                case "+":
+                    let top = stos.pop();
+                    stos.push(stos.pop() + top);
+                    break;
+                case "-":
+                    let top = stos.pop();
+                    stos.push(stos.pop() - top);
+                    break;
+                case "*":
+                    let top = stos.pop();
+                    stos.push(stos.pop() * top);
+                    break;
+                case "/":
+                    let top = stos.pop();
+                    stos.push(stos.pop() / top);
+                    break;
+                case "^":
+                    let top = stos.pop();
+                    stos.push(stos.pop() ** top);
+                    break;
+            }
+        }
+    }
+    if (stos.length > 1) {
+        throw "Otrzymano za dużo liczb (czy nie napisałeś dwóch liczb pod rząd?)";
+    }
+    return stos[0];
+}
+
+// Zwraca tablicę punktów w postaci [x, y] w przedziale od a do b przy danej dokładności (dokładność = długość tablicy)
+function calculate_graph_points(rpn, a, b, length) {
+    // TODO
+}
