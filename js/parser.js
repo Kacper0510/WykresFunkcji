@@ -1,7 +1,8 @@
 "use strict";
 
 function tymczasowe_onclick() {
-    document.getElementById("canvas_div").innerHTML = parse_to_rpn(document.getElementById("wzor").value).toString();
+    let rpn = parse_to_rpn(document.getElementById("wzor").value);
+    document.getElementById("canvas_div").innerHTML = Array.from(calculate_graph_points(rpn, -10, 10, 20).entries()).toString();
 }
 
 const MNOZENIE_PRECEDENCJA = ["^", "*", "/"];
@@ -91,6 +92,7 @@ function parse_to_rpn(text) {
 // Obliczanie wartości wyrażenia w formacie ONP dla danego x
 function calculate_rpn(rpn, x) {
     let stos = [];
+    let top;
     for (const symbol of rpn) {
         if (typeof symbol === "number") {
             stos.push(symbol);
@@ -100,23 +102,23 @@ function calculate_rpn(rpn, x) {
                     stos.push(x);
                     break;
                 case "+":
-                    let top = stos.pop();
+                    top = stos.pop();
                     stos.push(stos.pop() + top);
                     break;
                 case "-":
-                    let top = stos.pop();
+                    top = stos.pop();
                     stos.push(stos.pop() - top);
                     break;
                 case "*":
-                    let top = stos.pop();
+                    top = stos.pop();
                     stos.push(stos.pop() * top);
                     break;
                 case "/":
-                    let top = stos.pop();
+                    top = stos.pop();
                     stos.push(stos.pop() / top);
                     break;
                 case "^":
-                    let top = stos.pop();
+                    top = stos.pop();
                     stos.push(stos.pop() ** top);
                     break;
             }
@@ -128,7 +130,12 @@ function calculate_rpn(rpn, x) {
     return stos[0];
 }
 
-// Zwraca tablicę punktów w postaci [x, y] w przedziale od a do b przy danej dokładności (dokładność = długość tablicy)
+// Zwraca mapę punktów w postaci x -> y w przedziale od a do b przy danej dokładności (dokładność = długość tablicy)
 function calculate_graph_points(rpn, a, b, length) {
-    // TODO
+    let punkty = new Map();
+    const dlugosc_przedzialow = Math.abs(a - b) / length;
+    for (let i = Math.min(a, b); i <= Math.max(a, b) + 0.000000001; i += dlugosc_przedzialow) {
+        punkty.set(i, calculate_rpn(rpn, i)); // TODO isFinite()
+    }
+    return punkty;
 }
