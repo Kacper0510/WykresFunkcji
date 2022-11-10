@@ -78,3 +78,9 @@ a:link, a:visited {
 .home {
     display: flex;
 }
+
+.zwykły_tekst{
+    margin-left: 2%;
+    margin-right: 2%;
+    text-align: center;
+}
