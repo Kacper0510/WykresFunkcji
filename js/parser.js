@@ -1,16 +1,13 @@
-"use strict";
-
-function tymczasowe_onclick() {
-    let rpn = parse_to_rpn(document.getElementById("wzor").value);
-    document.getElementById("canvas_div").innerHTML = Array.from(calculate_graph_points(rpn, -10, 10, 20).entries()).toString();
-}
-
 const MNOZENIE_PRECEDENCJA = ["^", "*", "/"];
 const DODAWANIE_PRECEDENCJA = ["^", "*", "/", "+", "-"];
 
+// Epsilon w dwóch postaciach: ułamek oraz liczba miejsc po przecinku
+const EPS = 0.00000001;
+const EPS_DP = -Math.log10(EPS);
+
 // Zamiana tekstu na odwrotną notację polską, zwraca tablicę liczb i operatorów
 // TODO implicit multiplication
-function parse_to_rpn(text) {
+export function parse_to_rpn(text) {
     text = text.toLowerCase().trim();
     if (text[0] === "-") text = "0" + text;
     let aktualna_liczba = "0";
@@ -130,12 +127,28 @@ function calculate_rpn(rpn, x) {
     return stos[0];
 }
 
-// Zwraca mapę punktów w postaci x -> y w przedziale od a do b przy danej dokładności (dokładność = długość tablicy)
-function calculate_graph_points(rpn, a, b, length) {
-    let punkty = new Map();
+// Zwraca tablicę punktów w postaci [x, y] w przedziale od a do b przy danej dokładności (dokładność = długość tablicy)
+export function calculate_graph_points(rpn, a, b, length) {
+    let punkty = [];
     const dlugosc_przedzialow = Math.abs(a - b) / length;
-    for (let i = Math.min(a, b); i <= Math.max(a, b) + 0.000000001; i += dlugosc_przedzialow) {
-        punkty.set(i, calculate_rpn(rpn, i)); // TODO isFinite()
+    for (let i = Math.min(a, b); i <= Math.max(a, b) + EPS; i += dlugosc_przedzialow) {
+        const i_eps = parseFloat(i.toFixed(EPS_DP));
+        punkty.push([i_eps, calculate_rpn(rpn, i_eps)]);
     }
     return punkty;
+}
+
+// Zwraca tablicę miejsc zerowych, gdzie każde z nich ma postać liczby lub przedziału [x1, x2]
+export function calculate_solutions(graph_points) {
+    return []; // TODO
+}
+
+// Zwraca tablicę wartości minimalnych funkcji w danym przedziale oraz jej wartość w tych miejscach
+export function calculate_minimum(graph_points) {
+    return [[], -30]; // TODO
+}
+
+// Zwraca tablicę wartości maksymalnych funkcji w danym przedziale oraz jej wartość w tych miejscach
+export function calculate_maximum(graph_points) {
+    return [[], 30]; // TODO
 }
