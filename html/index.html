@@ -73,11 +73,16 @@
             <div class="centered_text">
                 ...i kliknij przycisk "Generuj"
             </div>
-
             <div>
                 <div class="centered_text">
                     <br>
                     <input onclick="generate_onclick();" type="submit" value="Generuj">
+                </div>
+            </div>
+            <div class="wyróżniony_div błąd" id="div_blad" hidden>
+                <div class="centered_text">
+                    Wykryto błąd we wprowadzonych danych!
+                    <div id="komunikat_bledu"></div>
                 </div>
             </div>
             <!-- miejsce na tabelkę/rysunek na funkcję -->
@@ -87,10 +92,6 @@
             <div class="centered_text">  <!-- powinien być wyrażony w procentach ale html nie daje takich możliwości -->
                 <br>
                 <canvas height="500" id="miejsce_wykres" style="border:2px solid #000000;" width="700"></canvas>
-            </div>
-            <br>
-            <div class="centered_text">
-                Szczegóły twojej funkcji:
             </div>
             <br>
             <div class="wyróżniony_div">

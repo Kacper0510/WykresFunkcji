@@ -9,6 +9,9 @@ const EPS_DP = -Math.log10(EPS);
 // TODO implicit multiplication
 export function parse_to_rpn(text) {
     text = text.toLowerCase().trim();
+    if (!text.includes("x")) {
+        throw "Wyrażenia stałe nie są wspierane, użyj w swoim wzorze zmiennej 'x'";
+    }
     if (text[0] === "-") text = "0" + text;
     let aktualna_liczba = "0";
     let ostatni_lewy_nawias = 0;
@@ -140,15 +143,55 @@ export function calculate_graph_points(rpn, a, b, length) {
 
 // Zwraca tablicę miejsc zerowych, gdzie każde z nich ma postać liczby lub przedziału [x1, x2]
 export function calculate_solutions(graph_points) {
-    return []; // TODO
+    let miejsca_zerowe = [];
+    let poprzednia_wartosc = NaN;
+    for (let i = 0; i < graph_points.length; i++) {
+        const p = graph_points[i];
+        if (Math.abs(p[1]) < EPS) {
+            min_tablica.push(p[0]);
+            if (Math.abs(poprzednia_wartosc) < EPS) {
+                return Infinity;
+            }
+        }
+        poprzednia_wartosc = p[1];
+    }
+    return miejsca_zerowe;
 }
 
 // Zwraca tablicę wartości minimalnych funkcji w danym przedziale oraz jej wartość w tych miejscach
 export function calculate_minimum(graph_points) {
-    return [[], -30]; // TODO
+    const min = Math.min(...graph_points.map(x => x[1]));
+    let min_tablica = [];
+    let poprzednia_wartosc = NaN;
+    for (let i = 0; i < graph_points.length; i++) {
+        const p = graph_points[i];
+        if (Math.abs(p[1] - min) < EPS) {
+            min_tablica.push(p[0]);
+            if (Math.abs(poprzednia_wartosc - p[1]) < EPS) {
+                return [Infinity, min];
+            }
+        }
+        poprzednia_wartosc = p[1];
+    }
+    return [min_tablica, min];
 }
 
 // Zwraca tablicę wartości maksymalnych funkcji w danym przedziale oraz jej wartość w tych miejscach
 export function calculate_maximum(graph_points) {
-    return [[], 30]; // TODO
+    const max = Math.max(...graph_points.map(x => x[1]));
+    // RIP moje jednolinijkowe arcydzieło (f*** you, przedziały maksimów)
+    // const max_tablica = graph_points.filter(x => abs(x - max) < EPS);
+    let max_tablica = [];
+    let poprzednia_wartosc = NaN;
+    for (let i = 0; i < graph_points.length; i++) {
+        const p = graph_points[i];
+        if (Math.abs(p[1] - max) < EPS) {
+            max_tablica.push(p[0]);
+            if (Math.abs(poprzednia_wartosc - p[1]) < EPS) {
+                return [Infinity, max];
+            }
+        }
+        poprzednia_wartosc = p[1];
+    }
+    return [max_tablica, max];
 }

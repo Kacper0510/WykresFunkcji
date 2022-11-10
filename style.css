@@ -54,6 +54,10 @@ body {
     background-color: #E1DAD8;
 }
 
+.błąd {
+    background-color: #f25c69;
+}
+
 .napis_kalkulator {
     text-align: center;
     text-shadow: 0px 0px 10px #;

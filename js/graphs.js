@@ -25,13 +25,22 @@ export function generate_graph(f, canvas, a, b) {
     ctx.lineWidth = 3;
     ctx.strokeStyle = "green";
 
-    const min = parser.calculate_minimum(values);
-    const max = parser.calculate_maximum(values);
-    // TODO linie wykresu (log_10)
+    const minima = parser.calculate_minimum(values);
+    const maxima = parser.calculate_maximum(values);
+    let magnitude, min, max;
+    if (isFinite(minima[1]) && isFinite(maxima[1])) {
+        magnitude = Math.floor(Math.log10(maxima[1] - minima[1]));
+        min = minima[1] - 10 ** magnitude;
+        max = maxima[1] + 10 ** magnitude;
+    } else { // Nie wiem, czy jest lepszy sposób na zapobieganie problemowi z 1/x
+        magnitude = 1;
+        min = -100;
+        max = 100;
+    }
 
     for (let i = 0; i < values.length - 1; i++) {
-        const p1 = translate_point(canvas, a, b, min[1], max[1], values[i]);
-        const p2 = translate_point(canvas, a, b, min[1], max[1], values[i + 1]);
+        const p1 = translate_point(canvas, a, b, min, max, values[i]);
+        const p2 = translate_point(canvas, a, b, min, max, values[i + 1]);
         if (isFinite(values[i][1]) && isFinite(values[i + 1][1])) {
             draw_line(ctx, p1, p2);
         }
@@ -39,9 +48,22 @@ export function generate_graph(f, canvas, a, b) {
 }
 
 // Wywoływane po kliknięciu "Generuj" na stronie głównej
-// TODO catch, a == b
 export function graphing_calculator_generate_onclick() {
-    const rpn = document.getElementById("wzor").value;
-    const canvas = document.getElementById("miejsce_wykres");
-    generate_graph(rpn, canvas, -10, 10);
+    try {
+        const f = document.getElementById("wzor").value;
+        if (f.length === 0) {
+            throw "Wzór nie może być pusty";
+        }
+        const a = document.getElementById("przedzial_dolny").value;
+        const b = document.getElementById("przedzial_gorny").value;
+        if (a >= b) {
+            throw "Początek przedziału nie może być większy lub równy jego końcowi";
+        }
+        const canvas = document.getElementById("miejsce_wykres");
+        generate_graph(f, canvas, -10, 10);
+        document.getElementById("div_blad").hidden = true;
+    } catch (e) {
+        document.getElementById("komunikat_bledu").innerHTML = e;
+        document.getElementById("div_blad").hidden = false;
+    }
 }
