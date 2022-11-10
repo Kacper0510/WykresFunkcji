@@ -80,10 +80,13 @@ a:link, a:visited {
     display: flex;
 }
 
-.zwykły_tekst{
+.zwykły_tekst {
     margin-left: 2%;
     margin-right: 2%;
     text-align: center;
+}
+h3 {
+    margin-top: 0px;
 }
 
 .srodek{
