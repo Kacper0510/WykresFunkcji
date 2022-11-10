@@ -45,6 +45,8 @@ export function generate_graph(f, canvas, a, b) {
             draw_line(ctx, p1, p2);
         }
     }
+
+    // TODO ekstrema, zera, siatka
 }
 
 // Wywoływane po kliknięciu "Generuj" na stronie głównej
@@ -60,7 +62,7 @@ export function graphing_calculator_generate_onclick() {
             throw "Początek przedziału nie może być większy lub równy jego końcowi";
         }
         const canvas = document.getElementById("miejsce_wykres");
-        generate_graph(f, canvas, -10, 10);
+        generate_graph(f, canvas, a, b);
         document.getElementById("div_blad").hidden = true;
     } catch (e) {
         document.getElementById("komunikat_bledu").innerHTML = e;
