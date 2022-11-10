@@ -3,7 +3,10 @@
         <meta charset="utf-8">
         <link href="../style.css" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-        <script src="../js/parser.js"></script>
+        <script type="module">
+            import { graphing_calculator_generate_onclick } from "../js/graphs.js";
+            window.generate_onclick = graphing_calculator_generate_onclick;
+        </script>
     </head>
     <body>
         <div class="home">
@@ -72,14 +75,14 @@
             <div>
                 <div class="centered_text">
                     <br>
-                    <input onclick="tymczasowe_onclick();" type="submit" value="Generuj">
+                    <input onclick="generate_onclick();" type="submit" value="Generuj">
                 </div>
             </div>
             <!-- miejsce na tabelkę/rysunek na funkcję -->
             <div class="centered_text">
                 <br><br>Twój wykres:
             </div>
-            <div class="centered_text" id="canvas_div">  <!-- powinien być wyrażony w procentach ale html nie daje takich możliwości -->
+            <div class="centered_text">  <!-- powinien być wyrażony w procentach ale html nie daje takich możliwości -->
                 <br>
                 <canvas height="500" id="miejsce_wykres" style="border:2px solid #000000;" width="700"></canvas>
             </div>
