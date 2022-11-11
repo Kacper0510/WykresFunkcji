@@ -139,13 +139,14 @@ export function calculate_graph_points(rpn, a, b, length) {
 }
 
 // Zwraca tablicę miejsc zerowych, gdzie każde z nich ma postać liczby lub przedziału [x1, x2]
+// FIXME
 export function calculate_solutions(graph_points) {
     let miejsca_zerowe = [];
     let poprzednia_wartosc = NaN;
     for (let i = 0; i < graph_points.length; i++) {
         const p = graph_points[i];
         if (Math.abs(p[1]) < EPS) {
-            min_tablica.push(p[0]);
+            miejsca_zerowe.push(p[0]);
             if (Math.abs(poprzednia_wartosc) < EPS) {
                 return Infinity;
             }

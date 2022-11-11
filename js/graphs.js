@@ -16,13 +16,14 @@ function draw_line(ctx, p1, p2) {
     ctx.closePath();
 }
 
-// Wyświetla wykres danej funkcji (string) na danym elemencie typu canvas w przedziale od a do b
+// Wyświetla wykres danej funkcji (string) na danym elemencie typu canvas w przedziale od a do b. Zwraca minima, maksima i miejsca zerowe.
 export function generate_graph(f, canvas, a, b) {
     f = parser.parse_to_rpn(f);
     const values = parser.calculate_graph_points(f, a, b, 1000);
     const ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.font = "12px Roboto";
+    ctx.fillStyle = "gray";
 
     // Granice y
     const minima = parser.calculate_minimum(values);
@@ -74,7 +75,29 @@ export function generate_graph(f, canvas, a, b) {
         }
     }
 
-    // TODO ekstrema, zera
+    // Ekstrema, miejsca zerowe
+    ctx.fillStyle = "blue";
+    if (minima[0] !== Infinity) {
+        for (const m of minima[0]) {
+            const p = translate_point(canvas, a, b, min, max, [m, minima[1]]);
+            ctx.fillRect(p[0] - 4, p[1] - 4, 8, 8);
+        }
+    }
+    if (maxima[0] !== Infinity) {
+        for (const m of maxima[0]) {
+            const p = translate_point(canvas, a, b, min, max, [m, maxima[1]]);
+            ctx.fillRect(p[0] - 4, p[1] - 4, 8, 8);
+        }
+    }
+    let miejsca_zerowe = parser.calculate_solutions(values);
+    if (miejsca_zerowe !== Infinity && miejsca_zerowe.length > 0) {
+        ctx.fillStyle = "red";
+        for (const mz of miejsca_zerowe) {
+            const p = translate_point(canvas, a, b, min, max, [mz, 0]);
+            ctx.fillRect(p[0] - 4, p[1] - 4, 8, 8);
+        }
+    }
+    return [minima, maxima, miejsca_zerowe];
 }
 
 // Wywoływane po kliknięciu "Generuj" na stronie głównej
@@ -90,7 +113,26 @@ export function graphing_calculator_generate_onclick() {
             throw "Początek przedziału nie może być większy lub równy jego końcowi";
         }
         const canvas = document.getElementById("miejsce_wykres");
-        generate_graph(f, canvas, a, b);
+        const [minima, maxima, mz] = generate_graph(f, canvas, a, b);
+        if (mz === Infinity) {
+            document.getElementById("miejsca_zerowe_output").innerHTML = "nieskończenie wiele";
+        } else if (mz.length === 0) {
+            document.getElementById("miejsca_zerowe_output").innerHTML = "brak";
+        } else {
+            document.getElementById("miejsca_zerowe_output").innerHTML = mz.join(", ");
+        }
+        document.getElementById("minima_y").innerHTML = minima[1];
+        if (minima[0] === Infinity) {
+            document.getElementById("minima_output").innerHTML = "nieskończenie wiele";
+        } else {
+            document.getElementById("minima_output").innerHTML = minima[0].join(", ");
+        }
+        document.getElementById("maxima_y").innerHTML = maxima[1];
+        if (maxima[0] === Infinity) {
+            document.getElementById("maxima_output").innerHTML = "nieskończenie wiele";
+        } else {
+            document.getElementById("maxima_output").innerHTML = maxima[0].join(", ");
+        }
         document.getElementById("div_blad").hidden = true;
     } catch (e) {
         document.getElementById("komunikat_bledu").innerHTML = e;
