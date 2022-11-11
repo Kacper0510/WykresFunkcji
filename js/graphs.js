@@ -17,9 +17,9 @@ function draw_line(ctx, p1, p2) {
 }
 
 // Wyświetla wykres danej funkcji (string) na danym elemencie typu canvas w przedziale od a do b. Zwraca minima, maksima i miejsca zerowe.
-export function generate_graph(f, canvas, a, b) {
+export function generate_graph(f, canvas, a, b, force_equal_scaling) {
     f = parser.parse_to_rpn(f);
-    const values = parser.calculate_graph_points(f, a, b, 1000);
+    const values = parser.calculate_graph_points(f, a, b, 5000);
     const ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.font = "12px Roboto";
@@ -29,18 +29,24 @@ export function generate_graph(f, canvas, a, b) {
     const minima = parser.calculate_minimum(values);
     const maxima = parser.calculate_maximum(values);
     let magnitude, min, max;
-    if (Math.abs(maxima[1] - minima[1]) < parser.EPS) {
-        magnitude = 0;
-        min = minima[1] - 10;
-        max = min + 20;
-    } else if (isFinite(minima[1]) && isFinite(maxima[1])) {
-        magnitude = Math.floor(Math.log10(maxima[1] - minima[1]));
-        min = minima[1] - 10 ** magnitude;
-        max = maxima[1] + 10 ** magnitude;
-    } else { // Nie wiem, czy jest lepszy sposób na zapobieganie problemowi z 1/x
-        magnitude = 1;
-        min = -100;
-        max = 100;
+    if (force_equal_scaling) {
+        magnitude = Math.floor(Math.log10(b - a));
+        min = a;
+        max = b;
+    } else {
+        if (Math.abs(maxima[1] - minima[1]) < parser.EPS) {
+            magnitude = 0;
+            min = minima[1] - 10;
+            max = min + 20;
+        } else if (isFinite(minima[1]) && isFinite(maxima[1])) {
+            magnitude = Math.floor(Math.log10(maxima[1] - minima[1]));
+            min = minima[1] - 10 ** magnitude;
+            max = maxima[1] + 10 ** magnitude;
+        } else { // Nie wiem, czy jest lepszy sposób na zapobieganie problemowi z 1/x
+            magnitude = 1;
+            min = -100;
+            max = 100;
+        }
     }
 
     // Siatka
@@ -113,7 +119,8 @@ export function graphing_calculator_generate_onclick() {
             throw "Początek przedziału nie może być większy lub równy jego końcowi";
         }
         const canvas = document.getElementById("miejsce_wykres");
-        const [minima, maxima, mz] = generate_graph(f, canvas, a, b);
+        const force_scaling = document.getElementById("stale_proporcje").checked;
+        const [minima, maxima, mz] = generate_graph(f, canvas, a, b, force_scaling);
         if (mz === Infinity) {
             document.getElementById("miejsca_zerowe_output").innerHTML = "nieskończenie wiele";
         } else if (mz.length === 0) {
@@ -121,13 +128,21 @@ export function graphing_calculator_generate_onclick() {
         } else {
             document.getElementById("miejsca_zerowe_output").innerHTML = mz.join(", ");
         }
-        document.getElementById("minima_y").innerHTML = minima[1];
+        if (isFinite(minima[1])) {
+            document.getElementById("minima_y").innerHTML = minima[1];
+        } else {
+            document.getElementById("minima_y").innerHTML = "???";
+        }
         if (minima[0] === Infinity) {
             document.getElementById("minima_output").innerHTML = "nieskończenie wiele";
         } else {
             document.getElementById("minima_output").innerHTML = minima[0].join(", ");
         }
-        document.getElementById("maxima_y").innerHTML = maxima[1];
+        if (isFinite(maxima[1])) {
+            document.getElementById("maxima_y").innerHTML = maxima[1];
+        } else {
+            document.getElementById("maxima_y").innerHTML = "???";
+        }
         if (maxima[0] === Infinity) {
             document.getElementById("maxima_output").innerHTML = "nieskończenie wiele";
         } else {
