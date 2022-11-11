@@ -53,6 +53,20 @@ body {
     float: left;
     background-color: #E1DAD8;
 }
+.wyróżniony_div1 {
+    margin: 2%;
+    box-shadow: 4px 4px 4px #888888;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    padding: 1.5%;
+    margin-bottom: 0.1%;
+    margin-top: 0.1%
+    margin-right: 0.1%;
+    margin-left: 0.1%
+    float: left;
+    background-color: #bfb1a4;
+}
 
 .błąd {
     background-color: #f25c69;
