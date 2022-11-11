@@ -46,6 +46,7 @@ export function parse_to_rpn(text) {
             }
             if (text.startsWith("pi", i)) {
                 wynik.push(Math.PI);
+                i += 1;
                 continue;
             }
             for (const f of FUNKCJE) {
