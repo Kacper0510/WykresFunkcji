@@ -2,16 +2,13 @@ const MNOZENIE_PRECEDENCJA = ["^", "*", "/"];
 const DODAWANIE_PRECEDENCJA = ["^", "*", "/", "+", "-"];
 
 // Epsilon w dwóch postaciach: ułamek oraz liczba miejsc po przecinku
-const EPS = 0.00000001;
+export const EPS = 0.00000001;
 const EPS_DP = -Math.log10(EPS);
 
 // Zamiana tekstu na odwrotną notację polską, zwraca tablicę liczb i operatorów
 // TODO implicit multiplication
 export function parse_to_rpn(text) {
     text = text.toLowerCase().trim();
-    if (!text.includes("x")) {
-        throw "Wyrażenia stałe nie są wspierane, użyj w swoim wzorze zmiennej 'x'";
-    }
     if (text[0] === "-") text = "0" + text;
     let aktualna_liczba = "0";
     let ostatni_lewy_nawias = 0;
