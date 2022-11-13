@@ -51,7 +51,7 @@ body {
     margin-right: 0.1%;
     margin-left: 0.1%
     float: left;
-    background-color: #E1DAD8;
+    background-image: linear-gradient(#aba59b, #ccc5ba);
 }
 .wyróżniony_div1 {
     margin: 2%;
@@ -65,7 +65,7 @@ body {
     margin-right: 0.1%;
     margin-left: 0.1%
     float: left;
-    background-color: #bfb1a4;
+    background-image: linear-gradient(#aba59b, #ccc5ba);
 }
 
 .błąd {
@@ -103,11 +103,37 @@ a:link, a:visited {
     margin-right: 2%;
     text-align: center;
 }
+
 h3 {
     margin-top: 0px;
 }
 
-.srodek{
-    text-align: center
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 70px auto;
+    padding: 20px;
+    padding-top: 0px;
+    border: 1px solid black;
+    background-image: linear-gradient(#aba59b, #ccc5ba);
+    border-radius: 5px;
+    width: 80%;
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
 
+.popup:target {
+    visibility: visible;
+    opacity: 1;
+}
+.popup .close {
+    text-align: right;
+    font-size: 15px;
+    font-weight: bold;
+}
+.popup .content {
+    overflow: auto;
 }
