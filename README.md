@@ -5,6 +5,10 @@ Projekt na koło programistyczne w V LO - październik 2022.
 - aktualizacja menu
 - miejsce do rysowania wykresów
 - podstrony (o funckjach, ekstremum, miejsca zerowe, o projekcie)
+- algorytm rysujący wykres, wyznaczający ekstrema i miejsca zerowe
+
+Wkrótce strona będzie dostępna na witrynie: 
+...
 
 Pełny temat:
 > Wykres, miejsca zerowe i ekstremum funkcji y=f(x)
