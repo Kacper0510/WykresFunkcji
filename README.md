@@ -1,5 +1,5 @@
 <h1 align="center">Wykres funkcji</h1>
-Projekt na koło programistyczne w V LO - październik 2022.
+Projekt na koło programistyczne w V LO - październik/listopad 2022.
 
 <b>Postępy prac: </b>
 - aktualizacja menu
